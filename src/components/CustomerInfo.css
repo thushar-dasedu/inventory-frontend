@@ -1,0 +1,61 @@
+ .customer-container{
+    display: flex;
+    flex-direction: column;
+    height:100%;
+    width: 100%;
+    overflow-y: scroll;
+ }
+
+ .customer-insert{
+   height:100%;
+    width:100%;
+    background-color: white;
+ }
+ 
+ .head{
+     
+    display: flex;
+    height: 10%;
+    justify-content: space-around;
+    align-items: center;
+    
+    background-color: blanchedalmond;
+ }
+ .table{
+    height: 80%;
+ }
+
+ .buton{
+    height: 7vh;
+    width: 6vw;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    background-color: rgb(181, 181, 251);
+ }
+
+ .h2{
+   padding: auto;
+   margin: auto;
+   margin-left: 15%;
+ }
+ .customer-form{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   
+   height: 93.9%;
+ }
+ .customer-form form{
+   
+   width: 65vw;
+ }
+
+ .form-label{
+   font-weight: 600;
+    font-size: 1.2vw;
+ }
+ td button{
+   margin-left: 25%;
+   padding: auto;
+ }
