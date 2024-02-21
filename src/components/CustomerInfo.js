@@ -19,6 +19,15 @@ const CustomerInfo = () => {
          getCustomerData();
 
     },[])
+const onDelete = (customerId)=>{
+  if(window.confirm("Are you  sure want to delete customer detail?"))
+   API.delete(`/customer/delete-customer-by/${customerId}`)
+ 
+  .then(()=>{
+    getCustomerData();
+  })
+}
+
   return (
      <div className="customer-container">
     <div className="head"><h1>Customer Details</h1> <button  className='buton'><Link to='/customer'>New</Link></button></div>
@@ -39,15 +48,15 @@ const CustomerInfo = () => {
     {
         APIdata.map((data)=>{
             return(
-                <tr>
+                <tr key={data.customerId}>
                     <td>{data.customerId}</td>
                     <td>{data.customerName}</td>
                     <td>{data.customerAddress}</td>
                     <td>{data.mobileNumber}</td>
                     <td>{data.email}</td>
-                    <td>
-                      <td><button> edit</button></td>
-                      <td><button> delete</button></td>
+                    <td className='action-td'>
+                      <div className='action-btn'><button  > <Link to={`/update-customer/${data.customerId}`}><i class="ri-edit-2-fill"></i></Link></button></div>
+                      <div className='action-btn' ><button onClick={()=> onDelete(data.customerId)}> <i class="ri-delete-bin-6-fill"></i></button></div>
                     </td>
                 </tr>
             )

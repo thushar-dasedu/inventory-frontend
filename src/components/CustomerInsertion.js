@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./CustomerInfo.css";
 import API from "../axios";
 
-const CustomerInsertion = () => {
+const CustomerInsertion = (props) => {
   const [customerName, setCustomerName] = useState("");
   const [customerAddress, setCustomerAddress] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
@@ -39,7 +39,7 @@ const CustomerInsertion = () => {
   return (
     <div className="customer-insert" style={{ height: "100%", width: "100%" }}>
       <div className="top">
-        <h2 className="h2">New Customer</h2>
+        <h2 className="h2">{props.title}</h2>
       </div>
       <div className="customer-form">
         <form>
@@ -120,7 +120,7 @@ const CustomerInsertion = () => {
             className="btn btn-primary"
             onClick={submitData}
           >
-            Submit
+           {props.btnvalue}
           </button>
 
           {  <div className="error">{errorMessage}</div>}

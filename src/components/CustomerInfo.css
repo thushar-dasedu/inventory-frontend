@@ -55,7 +55,24 @@
    font-weight: 600;
     font-size: 1.2vw;
  }
- td button{
-   margin-left: 25%;
-   padding: auto;
+ .action-td{
+   display: flex;
+   justify-content: space-evenly;
+ }
+.action-btn   button{
+ margin: auto;
+ padding: auto;
+ border: none;
+   
+ }
+ 
+ .ri-delete-bin-6-fill{
+   color: red;
+   height: 20%;
+ }
+ .ri-delete-bin-6-fill:hover{
+   scale: 1;
+ }
+ .ri-edit-2-fill{
+   color: rgb(134, 134, 248);
  }
