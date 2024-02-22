@@ -1,36 +1,49 @@
 import React, { useState } from "react";
 import "./CustomerInfo.css";
 import API from "../axios";
+import { useNavigate } from "react-router-dom";
 
 const CustomerInsertion = (props) => {
-  const [customerName, setCustomerName] = useState("");
-  const [customerAddress, setCustomerAddress] = useState("");
-  const [mobileNumber, setMobileNumber] = useState("");
-  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+   const data={
+    customerName:"",
+    customerAddress:"",
+    mobileNumber:"",
+    email:""
+   };
+   const [inputData ,setInputData] =useState(data);
+
   const [errorMessage, setErrorMessage] = useState("");
 
-  const submitData = async () => {
-    if (!customerName || !customerAddress || !mobileNumber || !email) {
+  const handleData=(e)=>{
+    setInputData({...inputData, [e.target.name] :e.target.value})
+  }
+  const handleMobileNumberChange = (e) => {
+    const value = e.target.value;
+    // Only allow input if it's a number and it's less than or equal to 10 characters
+    if (!isNaN(value) && value.length <= 10) {
+      setInputData(prevData => ({
+        ...prevData,
+        mobileNumber: value
+      }));
+    }
+  };
+  const submitData = async (e) => {
+    e.preventDefault();
+    if (!inputData.customerName || !inputData.customerAddress || !inputData.mobileNumber || !inputData.email) {
       setErrorMessage("Please fill in all fields.");
       return;
     }
-   
-      const customerData = {
-        customerName,
-        customerAddress,
-        mobileNumber,
-        email,
-      };
-      try {
-      const response = await API.post("/customer/add-customer", customerData);
 
-      console.log("customer added success full", response.data);
+    try {
+     const response= await API.post("/customer/add-customer",  inputData);
+     console.log(response.data);
+      // Navigate to customer info page after successful insertion
+      navigate('/customer-info');
     } catch (error) {
-      if (  error.response.status === 400) {
-        // Server responded with a 400 status code (Bad Request)
+      if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.message);
       } else {
-        // Handle other types of errors
         setErrorMessage("An error occurred. Please try again later.");
       }
     }
@@ -51,11 +64,9 @@ const CustomerInsertion = (props) => {
               type="text"
               id="disabledTextInput"
               className="form-control"
-              value={customerName}
-              onChange={(e) => {
-                
-                setCustomerName(e.target.value);
-              }}
+              name='customerName'
+              value={inputData.customerName}
+              onChange={handleData}
               placeholder="enter name"
             />
           </div>
@@ -67,11 +78,9 @@ const CustomerInsertion = (props) => {
               type="text"
               id="disabledTextInput"
               className="form-control"
-              value={customerAddress}
-              onChange={(e) => {
-               
-                setCustomerAddress(e.target.value);
-              }}
+              name='customerAddress'
+              value={inputData.customerAddress}
+              onChange={handleData}
               placeholder="Customer address"
             />
           </div>
@@ -81,20 +90,19 @@ const CustomerInsertion = (props) => {
               Mobile Number
             </label>
             <input
-              input
               type="tel"
               id="mobile_number"
               className="form-control"
-              name="mobile_number"
+              name='mobileNumber'
               pattern="[0-9]{10}"
               required
-              value={mobileNumber}
-              onChange={(e) => {
-                 
-                setMobileNumber(e.target.value);
-              }}
+              value={inputData.mobileNumber}
+              onChange={handleMobileNumberChange}
               placeholder="enter 10 digit number"
             />
+            {inputData.mobileNumber.length !== 10 && (
+        <div style={{ color: 'red' }}>Please enter exactly 10 digits</div>
+      )}
           </div>
           <div className="mb-3">
             <label htmlFor="disabledTextInput" className="form-label">
@@ -104,28 +112,21 @@ const CustomerInsertion = (props) => {
               type="email"
               className="form-control"
               id="email"
-              name="email"
-              value={email}
-              onChange={(e) => {
-               
-                setEmail(e.target.value);
-              }}
+              name='email'
+              value={inputData.email}
+              onChange={handleData}
               placeholder="enter email address"
               required
             />
           </div>
 
-          <button
-            
-            className="btn btn-primary"
-            onClick={submitData}
-          >
-           {props.btnvalue}
+          <button className="btn btn-primary" onClick={submitData}>
+            {props.btnvalue}
           </button>
 
-          {  <div className="error">{errorMessage}</div>}
+          {errorMessage && <div className="error">{errorMessage}</div>}
+          
         </form>
-       
       </div>
     </div>
   );

@@ -58,12 +58,18 @@ h2{
     color: white;
     text-decoration: none;
  }
+ .Home a{
+  font-size: 1vw;
+ }
  .customer{
   display: flex;
   justify-content: center;
   margin-top: 10%;
   
   padding: 5%;
+ }
+ .customer a{
+  font-size: 1vw;
  }
   .customer:hover{
     background-color: rgb(95, 91, 91);

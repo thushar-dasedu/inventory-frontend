@@ -1,32 +1,36 @@
- import { Route,   Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import CustomerInfo from './components/CustomerInfo';
 import InventoryComponent from './components/InventoryComponent';
 import Navbar from './components/Navbar';
 import CustomerInsertion from './components/CustomerInsertion';
 import UpdateCustomer from './components/UpdateCustomer';
+import SupplierComponent from './components/SupplierComponent';
+import SupplierInsertion from './components/SupplierInsertion';
+import UpdateSupplier from './components/UpdateSupplier';
 
 function App() {
   return (
-   
-   <div className="main">
-    <div className="leftDiv">
-     <InventoryComponent />
-     </div>
-     <div className="rightDiv">
-    <Navbar title="TDBrands"/>
-    <div className='content'>
-    <Routes>
-    <Route exact path='/customer-info' Component={CustomerInfo}></Route>
-    <Route exact path='/customer' Component={()=><CustomerInsertion title="New Customers" btnvalue="Submit"/> }/> 
-    <Route exact path='/update-customer/:customerId' Component={()=><UpdateCustomer title='Update customer info' btnvalue='update' />} />
-    </Routes>
-   </div>
-    </div>
-   
-  
-    </div>
-   
+    <Router>
+      <div className="main">
+        <div className="leftDiv">
+          <InventoryComponent />
+        </div>
+        <div className="rightDiv">
+          <Navbar title="TDBrands" />
+          <div className='content'>
+          <Routes>
+              <Route path='/customer-info' element={<CustomerInfo />} />
+              <Route path='/supplier-info' element={<SupplierComponent/>}/>
+              <Route path='/supplier' element={<SupplierInsertion title="New Supplier" btnvalue="save"/>}/>
+              <Route path='/customer' element={<CustomerInsertion title="New Customers" btnvalue="Submit" />} /> 
+              <Route path='/update-customer/:customerId' element={<UpdateCustomer title='Update customer info' btnvalue='update' />} />
+              <Route path='/update-supplier/:supplierId' element={<UpdateSupplier title='Update supplier info' btnvalue='update'/>}/>
+            </Routes>
+          </div>
+        </div>
+      </div>
+    </Router>
   );
 }
 

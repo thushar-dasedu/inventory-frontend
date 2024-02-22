@@ -16,6 +16,10 @@ const InventoryComponent = () => {
     
        <Link to='/customer-info'> Customer </Link>
        </div>
+       <div className="customer">
+    
+       <Link to='/supplier-info'> supplier</Link>
+       </div>
        
     </div>
   )
