@@ -18,9 +18,11 @@ const InventoryComponent = () => {
        </div>
        <div className="customer">
     
-       <Link to='/supplier-info'> supplier</Link>
+       <Link to='/supplier-info'> Supplier</Link>
        </div>
-       
+       <div className="product">
+        <Link to='/product'>Product</Link>
+       </div>
     </div>
   )
 }

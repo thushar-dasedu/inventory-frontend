@@ -1,0 +1,10 @@
+.head{
+    display: flex;
+}
+
+.action-btn  button{
+    margin-left: 1em;
+}
+.ri-add-box-fill{
+    color: rgb(34, 36, 36);
+}
