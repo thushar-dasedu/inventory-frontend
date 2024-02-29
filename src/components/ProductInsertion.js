@@ -41,7 +41,11 @@ const ProductInsertion = () => {
                       <div className='action-btn space'>
                         <button><Link to={`/model-insertion/${data.productId}`}><i class="ri-add-box-fill"></i></Link></button>
                         <button  > <Link ><i class="ri-edit-2-fill"></i></Link></button> 
-                      <button  > <i class="ri-delete-bin-6-fill"></i></button></div>
+                      <button  > <i class="ri-delete-bin-6-fill"></i></button>
+                      <button  > <Link to={`/product-list/${data.productId}`}> <i class="ri-eye-fill"></i></Link></button> 
+
+                      </div>
+                     
                     </td>
                  
               </tr>

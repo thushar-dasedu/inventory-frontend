@@ -1,9 +1,8 @@
 * {
   padding: 0;
   margin: 0;
- 
 }
- 
+
 .header {
   display: flex;
   background-color: rgb(90, 88, 88);
@@ -39,48 +38,70 @@ h3 {
 }
 
 .ri-home-4-fill {
-  
   margin-left: 10%;
 }
- 
 
-     
-    
- 
-h2{
-    margin-top: 10%;
-    color: white;
+h2 {
+  margin-top: 10%;
+  color: white;
 }
- 
- 
 
- a{
-    color: white;
-    text-decoration: none;
- }
- .Home a{
+a {
+  color: white;
+  text-decoration: none;
+}
+.Home a {
   font-size: 1vw;
- }
- .customer{
+}
+.customer {
   display: flex;
   justify-content: center;
   margin-top: 10%;
-  
+  margin-left: 12%;
   padding: 5%;
- }
- .customer a{
+}
+.customer div{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  border-radius: 5px;
+}
+.customer div:hover{
+  background-color:rgb(95, 91, 91);
+}
+.customer a {
   font-size: 1vw;
- }
-  .customer:hover{
-    background-color: rgb(95, 91, 91);
-    border-radius: 5px;
-  }
-  .product{
-    display: flex;
+}
+.supplier{
+  display: flex;
   justify-content: center;
   margin-top: 10%;
-  
+
   padding: 5%;
-  }
-  
- 
+}
+.supplier:hover {
+  background-color: rgb(95, 91, 91);
+  border-radius: 5px;
+}
+.product {
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+
+  padding: 5%;
+}
+.product:hover {
+  background-color: rgb(95, 91, 91);
+  border-radius: 5px;
+}
+.purchase {
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+
+  padding: 5%;
+}
+.purchase:hover{
+  background-color: rgb(95, 91, 91);
+  border-radius: 5px;
+}

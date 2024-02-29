@@ -11,6 +11,9 @@ import UpdateSupplier from './components/UpdateSupplier';
 import ProductInsertion from './components/ProductInsertion';
 import AddProductBrand from './components/AddProductBrand';
 import ProductModelInsertion from './components/ProductModelInsertion';
+import ViewProduct from './components/ViewProduct';
+import Purchase from './components/Purchase';
+import PurchaseReport from './components/PurchaseReport';
 
 function App() {
   return (
@@ -23,15 +26,18 @@ function App() {
           <Navbar title="TDBrands" />
           <div className='content'>
           <Routes>
-              <Route path='/customer-info' element={<CustomerInfo />} />
-              <Route path='/supplier-info' element={<SupplierComponent/>}/>
-              <Route path='product' element={<ProductInsertion/>}/>
-              <Route path='/supplier' element={<SupplierInsertion title="New Supplier" btnvalue="save"/>}/>
-              <Route path='/customer' element={<CustomerInsertion title="New Customers" btnvalue="Submit" />} /> 
-              <Route path='/update-customer/:customerId' element={<UpdateCustomer title='Update customer info' btnvalue='update' />} />
-              <Route path='/update-supplier/:supplierId' element={<UpdateSupplier title='Update supplier info' btnvalue='update'/>}/>
-              <Route path='/add-product-brand' element={<AddProductBrand/>} />
-              <Route path='/model-insertion/:productId' element={<ProductModelInsertion/>} />
+              <Route exact path='/customer-info' element={<CustomerInfo />} />
+              <Route exact path='/supplier-info' element={<SupplierComponent/>}/>
+              <Route exact path='product' element={<ProductInsertion/>}/>
+              <Route exact path='/supplier' element={<SupplierInsertion title="New Supplier" btnvalue="save"/>}/>
+              <Route exact path='/customer' element={<CustomerInsertion title="New Customers" btnvalue="Submit" />} /> 
+              <Route exact path='/update-customer/:customerId' element={<UpdateCustomer title='Update customer info' btnvalue='update' />} />
+              <Route exact path='/update-supplier/:supplierId' element={<UpdateSupplier title='Update supplier info' btnvalue='update'/>}/>
+              <Route exact path='/add-product-brand' element={<AddProductBrand/>} />
+              <Route exact path='/model-insertion/:productId' element={<ProductModelInsertion/>} />
+              <Route exact path='/product-list/:productId' element={<ViewProduct/>} />
+              <Route exact path='/purchase' element={<Purchase/>}/>
+              <Route exact path='/purchase-reports' element={<PurchaseReport/>}/>
             </Routes>
           </div>
         </div>
