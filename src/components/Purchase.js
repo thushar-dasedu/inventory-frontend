@@ -1,12 +1,14 @@
-import { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { debounce } from 'lodash'; // Import debounce function from lodash library
+import React, { useState, useEffect } from 'react';
+import { Button, Form, Row, Col } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import { debounce } from 'lodash';
 import API from '../axios';
 import './Purchase.css';
+import SearchBar from './SearchBar';
+import SearchList from './SearchList';
 
 const Purchase = () => {
-    const [inputData, setInputData] = useState({
+     const [inputData, setInputData] = useState({
         supplierId: "",
         purchaseDetailModels: [{
             modelId: "",
@@ -16,22 +18,25 @@ const Purchase = () => {
             serialNumbers: []  
         }]
     });
+    const navigate=useNavigate();
+    const [containSerial, setContainSerial] = useState([]);
 
-    const [containSerial, setContainSerial] = useState(false);
-
-    const trackSerial = async (modelId) => {
-        try{
+    useEffect(() => {
+        setContainSerial(new Array(inputData.purchaseDetailModels.length).fill(false));
+    }, [inputData.purchaseDetailModels.length]);
+     
+    const trackSerial =  async (modelId, index) => {
+        try {
             const response = await API.get(`/product/check-serial-number/${modelId}`);
-            console.log(response.data);
-            setContainSerial(response.data);
-        }catch(error){
+            const updatedContainSerial = [...containSerial];
+            updatedContainSerial[index] = response.data;
+            setContainSerial(updatedContainSerial);
+        } catch (error) {
             console.log(error.response.data.message)
         }
-        
-    }
+    };
 
-    // Debounce trackSerial function to limit API calls
-    const debouncedTrackSerial = debounce(trackSerial, 300); // 300 milliseconds debounce delay
+    const debouncedTrackSerial = debounce(trackSerial, 300);
 
     const handleInput = (e, index) => {
         const { name, value } = e.target;
@@ -41,36 +46,19 @@ const Purchase = () => {
                 ...prevState,
                 [name]: value
             }));
-        } else if (name === 'modelId') {
-            // Call debouncedTrackSerial instead of trackSerial
-            debouncedTrackSerial(value);
-            const updatedPurchaseDetailModels = [...inputData.purchaseDetailModels];
-            updatedPurchaseDetailModels[index][name] = value;
-            setInputData(prevState => ({
-                ...prevState,
-                purchaseDetailModels: updatedPurchaseDetailModels
-            }));
-        } else {
-            const updatedPurchaseDetailModels = [...inputData.purchaseDetailModels];
-            updatedPurchaseDetailModels[index][name] = value;
-            setInputData(prevState => ({
-                ...prevState,
-                purchaseDetailModels: updatedPurchaseDetailModels
-            }));
+        } else if (name === 'modelId' && value.trim() !== "") {
+            debouncedTrackSerial(value, index);
         }
-    };
 
- 
-
-
-    const addSerialNumber = (index, serialNumber) => {
         const updatedPurchaseDetailModels = [...inputData.purchaseDetailModels];
-        updatedPurchaseDetailModels[index].serialNumbers.push(serialNumber);
+        updatedPurchaseDetailModels[index][name] = value;
         setInputData(prevState => ({
             ...prevState,
             purchaseDetailModels: updatedPurchaseDetailModels
         }));
     };
+
+   
 
     const addNewRow = () => {
         setInputData(prevState => ({
@@ -79,11 +67,11 @@ const Purchase = () => {
                 modelId: "",
                 unitPrice: "",
                 quantity: "",   
-                serialNumbers: [] // Ensure new rows have an empty serialNumbers array
+                discount: "",
+                serialNumbers: []
             }]
         }));
     };
-
     const removeRow = (index) => {
         if (inputData.purchaseDetailModels.length === 1) {
             setInputData({
@@ -102,7 +90,6 @@ const Purchase = () => {
             purchaseDetailModels: prevState.purchaseDetailModels.filter((_, idx) => idx !== index)
         }));
     };
-
     const calculateDiscountAmount = (index) => {
         const { unitPrice, discount, quantity } = inputData.purchaseDetailModels[index];
         return ((unitPrice * discount) / 100) * quantity;
@@ -113,25 +100,58 @@ const Purchase = () => {
         const discountAmount = calculateDiscountAmount(index);
         return (unitPrice * quantity) - discountAmount;
     };
-
+    const handleSerialNumberChange = (e, index, serialIndex) => {
+        const { value } = e.target;
+        const purchaseDetailModels = [...inputData.purchaseDetailModels];
+        purchaseDetailModels[index].serialNumbers[serialIndex] = value;
+        setInputData({ ...inputData, purchaseDetailModels });
+    };
+    
+      
+    
+    
+     
+    
     const submitData = async () => {
+        if (!inputData.supplierId || !inputData.purchaseDetailModels.every(detail => detail.modelId && detail.quantity)) {
+            alert("Please fill in all the fields.");
+            return;
+        }
+     // Validate serial numbers
+     const isSerialFilled = inputData.purchaseDetailModels.every((detail, index) => {
+        if (containSerial[index]) {
+            return detail.serialNumbers.length === parseInt(detail.quantity);
+        }
+        return true;
+    });
+
+    if (!isSerialFilled) {
+        alert('Please fill in all serial numbers.');
+        return;
+    }
+        // Update state
         try {
             const response = await API.post('/purchase-detail/add-purchase', inputData);
             console.log(response.data);
+            
             setInputData({
-                supplierId:"",
-                purchaseDetailModels:[{
-                    modelId:"",
-                    unitPrice:"",
-                    quantity:"",
-                    discount:"",
+                supplierId: "",
+                purchaseDetailModels: [{
+                    modelId: "",
+                    unitPrice: "",
+                    quantity: "",
+                    discount: "",
                     serialNumbers: []
                 }]
-            })
+            });
+    
+           navigate('/purchase-reports')
         } catch (error) {
             console.log(error.response.data.message);
+            alert('Failed to save data. Please try again.');
         }
     };
+    
 
     return (
         <div className='purchase-main'>
@@ -141,11 +161,15 @@ const Purchase = () => {
                 </Button>
             </div>
             <div className="purchase-body">
-                <Form.Group controlId="supplierId">
-                    <Form.Label>Supplier Id</Form.Label>
-                    <Form.Control type="number" name="supplierId" value={inputData.supplierId} onChange={(e) => handleInput(e, 0)} className='input-tag' disabled={false} min="0"/>
+                <Form.Group as={Row} controlId="supplierId" >
+                     
+                    <SearchBar   /> 
+                    
+                    
+                    
                 </Form.Group>
-                <table>
+                <div className="table-responsive">
+                <table className="table">
                     <thead>
                         <tr>
                             <th>Product Model</th>
@@ -155,6 +179,7 @@ const Purchase = () => {
                             <th>Serial Numbers</th>
                             <th>Discount Amount</th>
                             <th>Net Amount</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -173,26 +198,26 @@ const Purchase = () => {
                                     <Form.Control type="number" name="discount" value={detail.discount} onChange={(e) => handleInput(e, index)} min='0' />
                                 </td>
                                 <td>
-                                    {containSerial && containSerial[index] && containSerial[index] === true ? (
-                                        detail.serialNumbers.map((serialNumber, serialIndex) => (
-                                            <div key={serialIndex}>
-                                                <Form.Control type="text" value={serialNumber} onChange={(e) => {
-                                                    const newSerialNumber = e.target.value;
-                                                    addSerialNumber(index, newSerialNumber);
-                                                }} />
+                                    <div className="serial-number-container">
+                                        {containSerial[index] ? (
+                                            <div className="serial-inputs">
+                                                {[...Array(parseInt(detail.quantity || 0))].map((serialNumber, i) => (
+                                                    <Form.Control key={i} type="text" placeholder={`Serial Number ${i + 1}`} value={serialNumber} onChange={(e) => handleSerialNumberChange( e,index, i)} />
+                                                ))}
                                             </div>
-                                        ))
-                                    ) : null}
+                                        ) : null}
+                                    </div>
                                 </td>
                                 <td>{calculateDiscountAmount(index)}</td>
                                 <td>{calculateNetAmount(index)}</td>
                                 <td>
-                                    <Button style={{border:"none",background:'none'}} onClick={() => removeRow(index)}><i class="ri-close-circle-fill"></i></Button>
+                                    <Button style={{border:"none",background:'none'}} onClick={() => removeRow(index)}><i className="ri-close-circle-fill"></i></Button>
                                 </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
+                </div>
                 <Button onClick={addNewRow}  style={{border:'none',color:'black',marginTop:'1%',backgroundColor:'azure'}}><i className="ri-add-circle-line"></i>Add New Row</Button>
             </div>
             <Button className='submit-btn' variant="primary" onClick={submitData}>Save</Button>

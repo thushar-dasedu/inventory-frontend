@@ -65,3 +65,11 @@
   margin-right: 2%;
    
  }
+ .serial-number-container {
+    max-height: 8vh; /* Adjust the width as per your requirement */
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+  th{
+    font-size: 1vw;
+  }

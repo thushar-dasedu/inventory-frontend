@@ -14,6 +14,9 @@ import ProductModelInsertion from './components/ProductModelInsertion';
 import ViewProduct from './components/ViewProduct';
 import Purchase from './components/Purchase';
 import PurchaseReport from './components/PurchaseReport';
+import SaleReport from './components/SaleReport';
+import Sale from './components/Sale';
+ 
 
 function App() {
   return (
@@ -38,6 +41,8 @@ function App() {
               <Route exact path='/product-list/:productId' element={<ViewProduct/>} />
               <Route exact path='/purchase' element={<Purchase/>}/>
               <Route exact path='/purchase-reports' element={<PurchaseReport/>}/>
+              <Route exact path='/list-sale' element={<SaleReport/>}/>
+              <Route exact path='/add-sale'  element={<Sale/>} />
             </Routes>
           </div>
         </div>

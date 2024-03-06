@@ -73,16 +73,31 @@ a {
   font-size: 1vw;
 }
 .supplier{
-  display: flex;
-  justify-content: center;
-  margin-top: 10%;
-
+  display: inline-block;
+   margin-top: 10%;
+   margin-left: 10%;
+  position: relative;
   padding: 5%;
+  color: white;
 }
-.supplier:hover {
-  background-color: rgb(95, 91, 91);
-  border-radius: 5px;
+.dropdown-content{
+  display: none;
+  position: absolute;
+  min-width: 200%;
+  z-index: 1;
 }
+.dropdown-content a{
+  display: block;
+  text-decoration: none;
+  
+}
+.dropdown-content a:hover{
+  background-color: rgb(241, 108, 108);
+}
+.supplier:hover .dropdown-content {
+    background-color: rgb(95, 91, 91);
+    border-radius: 5px;
+    display: block;}
 .product {
   display: flex;
   justify-content: center;
@@ -104,4 +119,23 @@ a {
 .purchase:hover{
   background-color: rgb(95, 91, 91);
   border-radius: 5px;
+}
+ 
+.sale{
+  display: inline-block;
+  position: relative;
+  margin-left: 10%;
+  color: white;
+  padding: 5%;
+}
+.sale .dropdown-content{
+  display: none;
+  position: absolute;
+  min-width: 300%;
+  z-index: 1;
+}
+.sale:hover .dropdown-content{
+  display: block;
+  background-color: rgb(95, 94, 92);
+  border-radius: 5%;
 }
