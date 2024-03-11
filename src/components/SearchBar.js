@@ -1,35 +1,37 @@
-// SearchBar.js
 import React, { useState } from 'react';
 import './SearchBar.css';
 import API from '../axios';
-// import SearchResult from './SearchResult'; // Import SearchResult component
 import SearchList from './SearchList';
 import Button from 'react-bootstrap/Button';
-const SearchBar = () => {
+
+const SearchBar = (props) => {
     const [input, setInput] = useState('');
     const [results, setResults] = useState([]);
     const [showDropdown, setShowDropdown] = useState(false); // State to manage dropdown visibility
 
     const fetchSupplierData = async (value) => {
         try {
-            const response = await API.get('/supplier/get-all-supplier');
-            const filteredResults = response.data.filter((user) => 
-                user.supplierName.toLowerCase().includes(value.toLowerCase())
-                
-            );
-             
-            setResults(filteredResults);
-            console.log(filteredResults);
-             
-            setShowDropdown(true); // Show dropdown after fetching results
-            // if(value.trim()!=='' && setShowDropdown(false)){
-            //       console.log()
-            // }
+            if (props.name === 'supplier') {
+                const response = await API.get('/supplier/get-all-supplier');
+                const filteredResults = response.data.filter((user) => 
+                    user.supplierName.toLowerCase().includes(value.toLowerCase())
+                );
+                setResults(filteredResults);
+                setShowDropdown(true);
+            } else if (props.name === 'product') {
+                const response = await API.get('/pro-model/get-all-model');
+                const filteredResults = response.data.filter((user) => 
+                    user.productModelName.toLowerCase().includes(value.toLowerCase())
+                );
+                setResults(filteredResults);
+                setShowDropdown(true);
+            }
         } catch (error) {
-            console.error('Error fetching supplier data:', error);
+            console.error('Error fetching data:', error);
             setResults([]);
         }
     };
+
     const handleInput = (value) => {
         setInput(value);
         if (value.trim() === '') {
@@ -45,27 +47,43 @@ const SearchBar = () => {
         }
     };
     
-    
- 
- 
     return (
         <div className='search-container'>
-            <label htmlFor="supplierName">Supplier Name</label>
-            <div className="search-bar">
-
-                <i className="ri-search-eye-line"></i>
-                <input
-                    placeholder='Select supplier'
-                    value={input}
-                    onChange={(e) => handleInput(e.target.value)}
-                />
-                {showDropdown && (
-                    <div className="dropdown">
-                         <SearchList result={results}  setShowDropdown={setShowDropdown} setInput={setInput}/>
-                         <Button variant="primary">addnew</Button>
+            {props.name === 'supplier' && (
+                <>
+                    <label htmlFor="supplierName">Supplier Name</label>
+                    <div className="search">
+                        <i className="ri-search-eye-line"></i>
+                        <input
+                            placeholder='Select supplier'
+                            value={input}
+                            onChange={(e) => handleInput(e.target.value)}
+                        />
+                        {showDropdown && (
+                            <div className="dropdown">
+                                <SearchList result={results} setShowDropdown={setShowDropdown} name={props.name} setInput={setInput}/>
+                                <Button variant="primary">addnew</Button>
+                            </div>
+                        )}
                     </div>
-                )}
-            </div>
+                </>
+            )}
+
+            {props.name === 'product' && (
+                <div className="search-bar">
+                    <input
+                        placeholder='Select product model'
+                        value={input}
+                        onChange={(e) => handleInput(e.target.value)}
+                    />
+                    {showDropdown && (
+                        <div className="dropdown">
+                            <SearchList result={results} setShowDropdown={setShowDropdown} name={props.name} setInput={setInput}/>
+                            <Button variant="primary">addnew</Button>
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
     );
 }

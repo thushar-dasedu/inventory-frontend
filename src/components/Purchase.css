@@ -2,19 +2,27 @@
   overflow-x: hidden;
  }
 .purchase-main{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  overflow-x: hidden;
+  overflow-y: auto; /* Change 'scroll' to 'auto' */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
    
     
 }
 .purchase-body{
-    margin: 5%;
-    height: 50vh;
-    overflow-x: hidden;
-    scrollbar-width: none;
+    margin: 2%;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+ .purchase-body::-webkit-scrollbar{
+  display: none;
+ } 
     
-}
+    
+    
 .purchase-body .input-tag{
     width: 30%;
 }

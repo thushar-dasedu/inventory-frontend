@@ -5,9 +5,9 @@ import { debounce } from 'lodash';
 import API from '../axios';
 import './Purchase.css';
 import SearchBar from './SearchBar';
-import SearchList from './SearchList';
-
+ 
 const Purchase = () => {
+    const[searchId,setSearchId]=useState();
      const [inputData, setInputData] = useState({
         supplierId: "",
         purchaseDetailModels: [{
@@ -40,16 +40,29 @@ const Purchase = () => {
 
     const handleInput = (e, index) => {
         const { name, value } = e.target;
-
+    
         if (name === 'supplierId') {
             setInputData(prevState => ({
                 ...prevState,
                 [name]: value
             }));
         } else if (name === 'modelId' && value.trim() !== "") {
-            debouncedTrackSerial(value, index);
+            setInputData(prevState => ({
+                ...prevState,
+                purchaseDetailModels: prevState.purchaseDetailModels.map((detail, i) => {
+                    if (i === index) {
+                        return {
+                            ...detail,
+                            [name]: value
+                        };
+                    }
+                    return detail;
+                })
+            }));
+            // Call trackSerial here if needed
         }
-
+    
+        // For other inputs like unitPrice, quantity, etc.
         const updatedPurchaseDetailModels = [...inputData.purchaseDetailModels];
         updatedPurchaseDetailModels[index][name] = value;
         setInputData(prevState => ({
@@ -57,6 +70,7 @@ const Purchase = () => {
             purchaseDetailModels: updatedPurchaseDetailModels
         }));
     };
+    
 
    
 
@@ -163,12 +177,11 @@ const Purchase = () => {
             <div className="purchase-body">
                 <Form.Group as={Row} controlId="supplierId" >
                      
-                    <SearchBar   /> 
-                    
+                 <SearchBar name="supplier"  setSearchId={setSearchId}/>
+                    {}
                     
                     
                 </Form.Group>
-                <div className="table-responsive">
                 <table className="table">
                     <thead>
                         <tr>
@@ -185,8 +198,10 @@ const Purchase = () => {
                     <tbody>
                         {inputData.purchaseDetailModels.map((detail, index) => (
                             <tr key={index}>
+                               
                                 <td>
-                                    <Form.Control type="number" name="modelId" value={detail.modelId} onChange={(e) => handleInput(e, index)} />
+                                <SearchBar name="product"  setSearchId={setSearchId} />
+                                
                                 </td>
                                 <td>
                                     <Form.Control type="number" name="unitPrice" value={detail.unitPrice} onChange={(e) => handleInput(e, index)} min='0' />
@@ -217,12 +232,12 @@ const Purchase = () => {
                         ))}
                     </tbody>
                 </table>
-                </div>
+
                 <Button onClick={addNewRow}  style={{border:'none',color:'black',marginTop:'1%',backgroundColor:'azure'}}><i className="ri-add-circle-line"></i>Add New Row</Button>
+                
             </div>
             <Button className='submit-btn' variant="primary" onClick={submitData}>Save</Button>
         </div>
     );
 };
-
 export default Purchase;
