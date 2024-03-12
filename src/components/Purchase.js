@@ -174,8 +174,8 @@ const Purchase = () => {
                     <Link to='/purchase-reports' className="text-white">Purchase Report</Link>
                 </Button>
             </div>
-            <div className="purchase-body">
-                <Form.Group as={Row} controlId="supplierId" >
+            {/* <div className="purchase-body"> */}
+                <Form.Group as={Row} controlId="supplierId"  >
                      
                  <SearchBar name="supplier"  setSearchId={setSearchId}/>
                     {}
@@ -235,7 +235,7 @@ const Purchase = () => {
 
                 <Button onClick={addNewRow}  style={{border:'none',color:'black',marginTop:'1%',backgroundColor:'azure'}}><i className="ri-add-circle-line"></i>Add New Row</Button>
                 
-            </div>
+            {/* </div> */}
             <Button className='submit-btn' variant="primary" onClick={submitData}>Save</Button>
         </div>
     );

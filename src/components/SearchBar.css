@@ -1,6 +1,7 @@
 .search-container{
     display: flex;
-    height: 2rem;
+     margin-top: 1%;
+
 }
 .search{
     margin-left: 10%;

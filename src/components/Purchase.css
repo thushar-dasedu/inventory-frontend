@@ -1,6 +1,9 @@
  body{
   overflow-x: hidden;
  }
+ .supplier{
+  margin-top: 1%;
+ }
 .purchase-main{
   overflow-x: hidden;
   overflow-y: auto; /* Change 'scroll' to 'auto' */
