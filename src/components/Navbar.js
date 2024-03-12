@@ -22,7 +22,9 @@ const Navbar = (props) => {
  
                     </form> */}
                      <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                     <Button variant="primary"><i class="ri-user-2-fill"></i></Button>{' '}
+                     <Button variant="primary"><i class="ri-user-2-fill"></i>Login</Button>{' '}
+                     <div className="cart">
+                     <i class="ri-shopping-cart-2-line"></i>                     </div>
                 </div>
  
              </div>
