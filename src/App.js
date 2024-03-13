@@ -5,6 +5,7 @@ import InventoryHome from './components/inventory-home/InventoryHome';
 // import CustomerInfo from './components/CustomerInfo';
 // import InventoryComponent from './components/InventoryComponent';
 import Navbar from './components/Navbar';
+import Registration from './components/inventory-home/Registration';
 // import CustomerInsertion from './components/CustomerInsertion';
 // import UpdateCustomer from './components/UpdateCustomer';
 // import SupplierComponent from './components/SupplierComponent';
@@ -58,6 +59,7 @@ function App() {
   
  <Routes>
   <Route path='/' element={<InventoryHome/>}/>
+  <Route path='/registration' element={<Registration/>}/>
  </Routes>
  </div>
 </Router>    

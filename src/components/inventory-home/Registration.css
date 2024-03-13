@@ -1,0 +1,90 @@
+.registration-main{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.login{
+ 
+    height: 85%;
+width: 50%;
+background-color: white;
+ 
+}
+.heading{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+ .user-name{
+    height: 20%;
+    width: 50%;
+    margin: 1%;
+    display: flex;
+    align-items: center;
+    background-color: rgb(254, 239, 239);
+ }
+ .address{
+    height: 4vh;
+
+width: 1.5vw;}
+ .user-name>input{
+    width: 79%;
+    height: 50%;
+    margin:0 5%;
+    border: none;
+    border-radius: 5px;
+ }
+ .user-name>input:focus{
+    outline: none;
+ }
+ .user-name img, .user-name i{
+    margin-left: 2%;
+ }
+ .submit-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 9vh;
+    width: 30vw;
+
+}
+
+ .submit-form{
+    margin: 1%;
+    height: 70%;
+    border: none;
+    border-radius: 10px;
+    background-color: blueviolet;
+    width: 40%;
+    color: white;
+ }
+.submit-form:active{
+    background-color: blue;
+}
+
+ 
+ @media (max-width:700px){
+    .user-name{
+        width: 90%;
+    }
+    .address{
+        height: 5vh;
+        width: 5vw;
+    }
+    .login{
+        width: 90%;
+        border-radius: 1em;
+    }
+    .submit-form{
+        font-size: 3vw;
+    }
+ }
+

@@ -1,6 +1,7 @@
 import React from 'react';
 import './Nav.css'
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
  
 
 const Navbar = (props) => {
@@ -22,7 +23,7 @@ const Navbar = (props) => {
  
                     </form> */}
                      <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                     <Button variant="primary"><i class="ri-user-2-fill"></i>Login</Button>{' '}
+                     <Button  ><Link to='/registration'><i class="ri-user-2-fill"></i>Login</Link></Button> 
                      <div className="cart">
                      <i class="ri-shopping-cart-2-line"></i>                     </div>
                 </div>
