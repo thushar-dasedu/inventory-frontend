@@ -23,6 +23,9 @@ background-color: white;
     flex-direction: column;
     align-items: center;
  }
+ .heading h3{
+    color: black;
+ }
  .user-name{
     height: 20%;
     width: 50%;
@@ -48,12 +51,12 @@ width: 1.5vw;}
  .user-name img, .user-name i{
     margin-left: 2%;
  }
- .submit-btn{
+ .submit-btns{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 9vh;
-    width: 30vw;
+    width: 25vw;
 
 }
 
@@ -85,6 +88,10 @@ width: 1.5vw;}
     }
     .submit-form{
         font-size: 3vw;
+
+    }
+    .submit-btns{
+        width: 40vw;
     }
  }
 

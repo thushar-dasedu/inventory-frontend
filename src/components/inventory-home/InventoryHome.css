@@ -40,6 +40,13 @@ span{
  
     width: 100%;
 }
+.laptop-section{
+    height: 50%;
+    width: auto;
+    margin: 1%;
+    background-color: white;
+}
+
 @media (max-width:700px){
     .category{
          overflow-x: scroll;
@@ -58,10 +65,8 @@ span{
     .image>img{
         height: 9vh;
     }
+    .laptop-section{
+        height: 30vh;
+    }
 }
-.laptop-section{
-    height: 50%;
-    width: auto;
-    margin: 1%;
-    background-color: white;
-}
+ 

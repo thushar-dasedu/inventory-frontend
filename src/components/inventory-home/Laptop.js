@@ -18,7 +18,7 @@ const Laptop = () => {
               <img src={asus15} alt="" />
               <div className="brand">Asus</div>
        </div>
-       <div className="laptops">
+       <div className="laptops">        
               <img src={asusvivo} alt="" />
               <div className="brand">Asus</div>
        </div>

@@ -31,4 +31,7 @@
 @media (max-width:700px){
   .content{width: 100%;
   height: 90vh;}
+  .leftDiv{
+    width: 30vw;
+  }
 }

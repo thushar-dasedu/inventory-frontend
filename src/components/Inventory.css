@@ -29,12 +29,12 @@
 }
 h3 {
   color: white;
-  position: relative;
+  /* position: relative; */
   top: 8%;
-  font-size: 1.1vw;
+  /* font-size: 1.1vw; */
   margin-left: 5%;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  /* font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", */
+    /* "Lucida Sans", Arial, sans-serif; */
 }
 
 .ri-home-4-fill {

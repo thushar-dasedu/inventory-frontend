@@ -38,5 +38,11 @@
     .laptop-body{
         display: flex;
         flex-wrap: wrap;
+        height: 20vh;
     }
+   .laptops .brand{
+    position: relative;
+    margin-left: 4vw;
+   }
+
   }
