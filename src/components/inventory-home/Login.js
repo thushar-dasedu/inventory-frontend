@@ -29,8 +29,13 @@ const Login = ({setAdminLog}) => {
         }
       });
       console.log(response.data);
-      navigate('/')
-      setAdminLog(true)
+      if(inputData.email==='radhe@gmail.com'&&inputData.password==='1234'){
+        navigate('/')
+        setAdminLog(true)
+      }else{
+        navigate('/')
+      }
+     
     }catch(error){
       console.log(error.response.data.message)
     }

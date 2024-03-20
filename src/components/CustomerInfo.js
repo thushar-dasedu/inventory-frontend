@@ -10,7 +10,11 @@ const CustomerInfo = () => {
     const [APIdata,setAPIData]=useState([]);
 
     const getCustomerData= async()=>{
-    const Response=await  API.get('/customer/get-all-customer');
+    const Response=await  API.get('/customer/get-all-customer',{
+      headers:{
+        'Authorization': 'basic '+ btoa('smith:smith123')
+      }
+    });
     setAPIData(Response.data);    
     };
 

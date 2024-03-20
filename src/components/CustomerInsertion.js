@@ -36,7 +36,11 @@ const CustomerInsertion = (props) => {
     }
 
     try {
-     const response= await API.post("/customer/add-customer",  inputData);
+     const response= await API.post("/customer/add-customer",  inputData,{
+      headers:{
+        'Authorization': 'basic '+ btoa('smith:smith123')
+      }
+    });
      console.log(response.data);
       // Navigate to customer info page after successful insertion
       navigate('/customer-info');

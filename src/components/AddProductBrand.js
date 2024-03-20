@@ -28,7 +28,11 @@ const AddProductBrand = () => {
     }
 
     try {
-      const response = await API.post('/product/add-product-brand', inputData);
+      const response = await API.post('/product/add-product-brand', inputData,{
+        headers:{
+          'Authorization': 'basic '+ btoa('smith:smith123')
+        }
+      });
       console.log(response.data);
       navigate('/product');
     } catch (error) {

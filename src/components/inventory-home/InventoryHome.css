@@ -35,6 +35,9 @@ span{
     object-fit: cover;
     
 }
+.image a{
+    color: black;
+}
 .span{
     display: flex;
  

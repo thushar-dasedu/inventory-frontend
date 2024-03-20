@@ -16,7 +16,11 @@ const [supplierData,setSupplierData]=useState({
 useEffect(()=>{
     const fetchSupplierData=async()=>{
         try{
-            const response=await API.get(`/supplier/get-supplier-id/${supplierId}`);
+            const response=await API.get(`/supplier/get-supplier-id/${supplierId}`,{
+              headers:{
+                'Authorization': 'basic '+ btoa('smith:smith123')
+              }
+            });
             setSupplierData(response.data);
            } catch(error){
             console.error("Error fetching customer data:", error);
@@ -36,7 +40,11 @@ setSupplierData((prevData)=>({
 const handleSubmit=async(e)=>{
     e.preventDefault();
     try{
-        const response=await API.put(`/supplier/update-supplier/${supplierId}`,supplierData);
+        const response=await API.put(`/supplier/update-supplier/${supplierId}`,supplierData,{
+          headers:{
+            'Authorization': 'basic '+ btoa('smith:smith123')
+          }
+        });
         console.log(response.data);
         navigate('/supplier-info');
     }catch (error) {

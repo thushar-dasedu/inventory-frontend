@@ -14,7 +14,11 @@ const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
 
 useEffect(()=>{
     const fetchData=async()=>{
-        const response=API.get('/purchase-detail/get-all-purchase');
+        const response=API.get('/purchase-detail/get-all-purchase',{
+          headers:{
+            'Authorization': 'basic '+ btoa('smith:smith123')
+          }
+        });
     setPurchaseData((await response).data);}
     fetchData();
 

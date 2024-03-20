@@ -12,14 +12,22 @@ const SearchBar = (props) => {
     const fetchSupplierData = async (value) => {
         try {
             if (props.name === 'supplier') {
-                const response = await API.get('/supplier/get-all-supplier');
+                const response = await API.get('/supplier/get-all-supplier',{
+                    headers:{
+                      'Authorization': 'basic '+ btoa('smith:smith123')
+                    }
+                  });
                 const filteredResults = response.data.filter((user) => 
                     user.supplierName.toLowerCase().includes(value.toLowerCase())
                 );
                 setResults(filteredResults);
                 setShowDropdown(true);
             } else if (props.name === 'product') {
-                const response = await API.get('/pro-model/get-all-model');
+                const response = await API.get('/pro-model/get-all-model',{
+                    headers:{
+                      'Authorization': 'basic '+ btoa('smith:smith123')
+                    }
+                  });
                 const filteredResults = response.data.filter((user) => 
                     user.productModelName.toLowerCase().includes(value.toLowerCase())
                 );

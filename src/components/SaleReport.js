@@ -11,7 +11,11 @@ const SaleReport = () => {
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
 
   const getSales = async () => {
-    let response = await API.get("/sale-detail/get-sale");
+    let response = await API.get("/sale-detail/get-sale",{
+      headers:{
+        'Authorization': 'basic '+ btoa('smith:smith123')
+      }
+    });
     setSaleData(response.data);
   };
 

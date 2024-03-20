@@ -27,7 +27,11 @@ const Purchase = () => {
      
     const trackSerial =  async (modelId, index) => {
         try {
-            const response = await API.get(`/product/check-serial-number/${modelId}`);
+            const response = await API.get(`/product/check-serial-number/${modelId}`,{
+                headers:{
+                  'Authorization': 'basic '+ btoa('smith:smith123')
+                }
+              });
             const updatedContainSerial = [...containSerial];
             updatedContainSerial[index] = response.data;
             setContainSerial(updatedContainSerial);
@@ -145,7 +149,11 @@ const Purchase = () => {
     }
         // Update state
         try {
-            const response = await API.post('/purchase-detail/add-purchase', inputData);
+            const response = await API.post('/purchase-detail/add-purchase', inputData,{
+                headers:{
+                  'Authorization': 'basic '+ btoa('smith:smith123')
+                }
+              });
             console.log(response.data);
             
             setInputData({

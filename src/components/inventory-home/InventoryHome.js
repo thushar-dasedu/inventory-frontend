@@ -6,6 +6,7 @@ import appliences from "../asset/appliences.webp";
 import fashion from "../asset/fashion.webp";
 import "./InventoryHome.css";
 import Laptop from "./Laptop";
+import { Link } from "react-router-dom";
 const InventoryHome = () => {
   return (
     <div className="inventory-main">
@@ -19,8 +20,10 @@ const InventoryHome = () => {
           <div className="span"> <span>Grocery</span></div> 
         </div>
         <div className="image">
+          <Link to='/product-info'> 
           <img src={mobile} alt="" />
           <div className="span">   <span>Mobile</span></div> 
+          </Link>
         </div>
         <div className="image">
           <img src={appliences} alt="" />

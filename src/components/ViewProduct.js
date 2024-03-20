@@ -8,7 +8,11 @@ const ViewProduct = () => {
   const [errorMessage, setErrorMessage] = useState();
   const getProductData = async () => {
     try {
-      const response = await API.get(`/pro-model/view-products/${productId}`);
+      const response = await API.get(`/pro-model/view-products/${productId}`,{
+        headers:{
+          'Authorization': 'basic '+ btoa('smith:smith123')
+        }
+      });
       setProductData(response.data);
     } catch (error) {
       setErrorMessage(error.response.data.message);

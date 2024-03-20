@@ -10,7 +10,11 @@ const SupplierComponent = () => {
     const [APIdata,setAPIData]=useState([]);
 
     const getSupplierData= async()=>{
-    const Response=await  API.get('/supplier/get-all-supplier');
+    const Response=await  API.get('/supplier/get-all-supplier',{
+      headers:{
+        'Authorization': 'basic '+ btoa('smith:smith123')
+      }
+    });
     setAPIData(Response.data);    
     };
 

@@ -22,6 +22,7 @@ import PurchaseReport from './components/PurchaseReport';
 import SaleReport from './components/SaleReport';
 import Sale from './components/Sale';
 import { useState } from 'react';
+import ProductInfo from './components/inventory-home/ProductInfo';
  
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
               <Route exact path='/purchase-reports' element={<PurchaseReport/>}/>
               <Route exact path='/list-sale' element={<SaleReport/>}/>
               <Route exact path='/add-sale'  element={<Sale/>} />
+              <Route exact path='/product-info' element={<ProductInfo/>}/>
     <Route path='/' element={<InventoryHome/>}/>
     <Route path='/registration' element={<Registration/>}/>
     <Route path='/login' element={<Login  setAdminLog={setAdminLog}/>}/>

@@ -24,7 +24,11 @@ const SupplierInsertion = (props) => {
             return;
           }
           try{
-            const response=await API.post(`/supplier/add-supplier`,inputData);
+            const response=await API.post(`/supplier/add-supplier`,inputData,{
+              headers:{
+                'Authorization': 'basic '+ btoa('smith:smith123')
+              }
+            });
             console.log(response.data);
             navigate('/supplier-info');
           }

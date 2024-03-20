@@ -51,7 +51,11 @@ const Sale = () => {
   }
     
  const getUnitPrice=async()=>{
-    const response=await API.get(`/pro-model/get-by/${inputData.productModelId}`);
+    const response=await API.get(`/pro-model/get-by/${inputData.productModelId}`,{
+        headers:{
+          'Authorization': 'basic '+ btoa('smith:smith123')
+        }
+      });
   setProductData(response.data);
  }
 

@@ -22,7 +22,11 @@ const ProductModelInsertion = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await API.get(`/product/get-product-by/${productId}`);
+                const response = await API.get(`/product/get-product-by/${productId}`,{
+                    headers:{
+                      'Authorization': 'basic '+ btoa('smith:smith123')
+                    }
+                  });
                 setProductData(response.data);
             } catch (error) {
                 setErrorMessage(error.response.data.message);
@@ -38,7 +42,11 @@ const ProductModelInsertion = () => {
     const submitData = async (e) => {
         e.preventDefault();
         try {
-            const response = await API.post('/pro-model/add-product-model', modelData);
+            const response = await API.post('/pro-model/add-product-model', modelData,{
+                headers:{
+                  'Authorization': 'basic '+ btoa('smith:smith123')
+                }
+              });
             console.log(response.data);
         } catch (error) {
             setErrorMessage(error.response.data.message);

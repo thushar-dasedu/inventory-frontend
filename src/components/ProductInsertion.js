@@ -7,7 +7,11 @@ import { Link } from "react-router-dom";
 const ProductInsertion = () => {
   const [productData, setProductData] = useState([]);
   const getProduct = async () => {
-    const response = await API.get(`/product/get-all-product`);
+    const response = await API.get(`/product/get-all-product`,{
+      headers:{
+        'Authorization': 'basic '+ btoa('smith:smith123')
+      }
+    });
     setProductData(response.data);
   };
   useEffect(() => {

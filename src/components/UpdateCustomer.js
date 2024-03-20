@@ -20,7 +20,11 @@ const UpdateCustomer = (props) => {
       try {
         const response = await API.get(
           `/customer/get-customer-by-id/${customerId}`
-        );
+        ,{
+          headers:{
+            'Authorization': 'basic '+ btoa('smith:smith123')
+          }
+        });
         setCustomerData(response.data);
       } catch (error) {
         console.error("Error fetching customer data:", error);
@@ -42,7 +46,11 @@ const UpdateCustomer = (props) => {
     try {
       const response = await API.put(
         `/customer/update-customer-by/${customerId}`,
-        customerData
+        customerData,{
+          headers:{
+            'Authorization': 'basic '+ btoa('smith:smith123')
+          }
+        }
       );
        console.log(response.data);
         navigate('/customer-info');
