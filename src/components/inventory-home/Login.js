@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 import "./Registration.css";
 import email from "../asset/email.png";
 import password from "../asset/password.png";
 import { useNavigate } from 'react-router-dom';
-import API from '../../axios';
+import { useProductContext } from '../../context/ProductContext';
+// import API from '../../axios';
 
-const Login = ({setAdminLog}) => {
+const Login = () => {
+
+  const name=useProductContext();
   const navigate=useNavigate();
   const [inputData,setInputData]=useState({
     email:"",
@@ -21,29 +24,31 @@ const Login = ({setAdminLog}) => {
 
   }
 
-  const login=async()=>{
-    try{
-      const response=await API.post('/customer/login',inputData,{
-        headers:{
-          'Authorization': 'basic '+ btoa('smith:smith123')
-        }
-      });
-      console.log(response.data);
-      if(inputData.email==='radhe@gmail.com'&&inputData.password==='1234'){
-        navigate('/')
-        setAdminLog(true)
-      }else{
-        navigate('/')
-      }
+  // const login=async()=>{
+  //   try{
+  //     const response=await API.post('/customer/login',inputData
+  //     ,{
+  //       headers:{
+  //         'Authorization': 'basic '+ btoa('radhe@gmail.com:1234')
+  //       }
+  //     }
+  //     );
+    //   console.log(response.data);
+    //   if(inputData.email==='radhe@gmail.com'&&inputData.password==='1234'){
+    //     navigate('/')
+    //     setAdminLog(true)
+    //   }else{
+    //     navigate('/')
+    //   }
      
-    }catch(error){
-      console.log(error.response.data.message)
-    }
+    // }catch(error){
+    //   console.log(error.response.data.message)
+    // }
      
-  }
+  // }
   const submitData=(e)=>{
     e.preventDefault();
-    login();
+    // login();
 
   }
   return (
@@ -54,7 +59,7 @@ const Login = ({setAdminLog}) => {
        
        
           <h3>
-            Login
+            Login :{name}
           </h3>
           
          

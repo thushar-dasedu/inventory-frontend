@@ -14,8 +14,7 @@
     align-items: center;
     justify-content: space-around;
     background-color: white;
-
-    width: auto;
+     width: auto;
     height: 17vh;
     margin:1%;
     gap: 1px;
@@ -32,7 +31,7 @@ span{
     flex-direction: column;
     height: 75%;
     position: sticky;
-    object-fit: cover;
+    object-fit: contain;
     
 }
 .image a{
@@ -42,9 +41,19 @@ span{
     display: flex;
  
     width: 100%;
+    margin-top: 0;
 }
 .laptop-section{
     height: 50%;
+    width: auto;
+    margin: 1%;
+    background-color: white;
+}
+
+
+.product-section{
+    
+    height: auto;
     width: auto;
     margin: 1%;
     background-color: white;

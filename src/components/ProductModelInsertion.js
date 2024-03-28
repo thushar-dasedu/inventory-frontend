@@ -42,11 +42,13 @@ const ProductModelInsertion = () => {
     const submitData = async (e) => {
         e.preventDefault();
         try {
-            const response = await API.post('/pro-model/add-product-model', modelData,{
-                headers:{
-                  'Authorization': 'basic '+ btoa('smith:smith123')
-                }
-              });
+            const response = await API.post('/pro-model/add-product-model', modelData
+            // ,{
+            //     headers:{
+            //       'Authorization': 'basic '+ btoa('smith:smith123')
+            //     }
+            //   }
+              );
             console.log(response.data);
         } catch (error) {
             setErrorMessage(error.response.data.message);

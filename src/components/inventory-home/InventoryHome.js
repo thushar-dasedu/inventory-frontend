@@ -7,6 +7,7 @@ import fashion from "../asset/fashion.webp";
 import "./InventoryHome.css";
 import Laptop from "./Laptop";
 import { Link } from "react-router-dom";
+import AllProduct from "./AllProduct";
 const InventoryHome = () => {
   return (
     <div className="inventory-main">
@@ -36,6 +37,9 @@ const InventoryHome = () => {
       </div>
       <div className="laptop-section">
         <Laptop/>
+      </div>
+      <div className="product-section">
+        <AllProduct/>
       </div>
     </div>
   );
