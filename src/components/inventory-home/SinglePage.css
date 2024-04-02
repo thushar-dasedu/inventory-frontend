@@ -1,0 +1,42 @@
+.single-container{
+    height: auto;
+    width: 100%;
+    background-color: rgb(206, 168, 242);
+    display: flex;
+}
+    
+.imgae{
+    height: 40vh;
+    width: 25vw;
+}
+.imgae > img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.buttons{
+    height: 10vh;
+    width: 25vw;
+    /* background-color: rgb(206, 168, 242); */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.buttons button{
+    height: 70%;
+    width: 38%;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: large;
+    border-radius: 0.5em;
+}
+
+.add-cart{
+    background-color: orange;
+}
+.buy{
+    background-color:rgb(241, 112, 112);
+}

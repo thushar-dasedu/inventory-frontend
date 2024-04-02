@@ -1,0 +1,26 @@
+.model-section{
+    width: 100%;
+    height: auto;
+}
+
+.model-detail{
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.products{
+    height: 100%;
+    width: 50%;
+}
+.images{
+    height: 100%;
+    width: 40%;
+}
+.img-section{
+    height: 90%;
+    width: auto;
+    border: 1px dashed black;
+    
+}

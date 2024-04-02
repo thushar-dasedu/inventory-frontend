@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import API from '../axios';
+import "./ProductModel.css"
 
 const ProductModelInsertion = () => {
     const { productId } = useParams();
@@ -56,26 +57,12 @@ const ProductModelInsertion = () => {
     };
 
     return (
-        <div>
-            <div>
-                <h2 className="h2">Add Product Brand</h2>
-            </div>
-
-            <div className="customer-form">
-                <form>
-                    <div className="mb-3">
-                        <label htmlFor="productId" className="form-label">
-                            Product Id
-                        </label>
-                        <input
-                            type="text"
-                            id="productId"
-                            className="form-control"
-                            name='productId'
-                            value={productData.productId}
-                            disabled
-                        />
-                    </div>
+        <div className='model-section'>
+            <h1>Add Product Model</h1>
+         <div className="model-detail">
+            <div className="products">
+ <form>
+              
                     <div className="mb-3">
                         <label htmlFor="brandName" className="form-label">
                             Brand Name
@@ -147,8 +134,17 @@ const ProductModelInsertion = () => {
                         Save
                     </button>
                     {errorMessage && <div className="error">{errorMessage}</div>}
-                </form>
+                </form>            </div>
+            <div className="images">
+                   <div className="img-section">
+                    <p>choose the product image</p>
+                    <input type="file" multiple/>
+                   </div>
+
             </div>
+         </div>
+
+           
         </div>
     );
 };

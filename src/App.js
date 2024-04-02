@@ -31,9 +31,9 @@ function App() {
   return (
     <Router>
       <div className="main">
-        {/* <div className="leftDiv">
+        <div className="leftDiv">
           <InventoryComponent />
-        </div>  */}
+        </div> 
         <div className="rightDiv">
           <Navbar title="TDBrands" />
           <div className="content">
