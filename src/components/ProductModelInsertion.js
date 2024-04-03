@@ -139,9 +139,11 @@ const ProductModelInsertion = () => {
                    <div className="img-section">
                     <p>choose the product image</p>
                     <input type="file" multiple/>
+
                    </div>
 
             </div>
+            
          </div>
 
            

@@ -12,7 +12,7 @@ const Laptop = () => {
   return (
     <div className='laptop-main'>
        
-       <h4>Best Deals on Smartphones</h4> 
+       <h4>Best Deals on Laptops</h4> 
        <div className="laptop-body"> 
        <div className="laptops">
               <img src={asus15} alt="" />

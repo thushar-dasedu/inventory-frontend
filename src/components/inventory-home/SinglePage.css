@@ -1,10 +1,12 @@
 .single-container{
     height: auto;
     width: 100%;
-    background-color: rgb(206, 168, 242);
+    /* background-color: rgb(206, 168, 242); */
     display: flex;
+    padding: 10%;
 }
     
+
 .imgae{
     height: 40vh;
     width: 25vw;
@@ -39,4 +41,17 @@
 }
 .buy{
     background-color:rgb(241, 112, 112);
+}
+
+.brand h1{
+text-transform: uppercase;
+}
+.brand h3{
+    text-transform: uppercase;
+    color: black;
+    margin: 0;
+}
+.discription{
+    margin: 1%;
+    text-align: justify;
 }
