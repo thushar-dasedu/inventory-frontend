@@ -24,6 +24,7 @@ import Sale from "./components/Sale";
 // import { useState } from 'react';
 import ProductInfo from "./components/inventory-home/ProductInfo";
 import SinglePage from "./components/inventory-home/SinglePage";
+import Cart from "./components/inventory-home/Cart";
 // import Footer from './Footer';
 
 function App() {
@@ -107,6 +108,7 @@ function App() {
               <Route path="/registration" element={<Registration />} />
               <Route path="/login" element={<Login />} />
               <Route path="/single-page/:modelId" element={<SinglePage/>}/>
+              <Route path="/cart-page" element={<Cart/>}></Route>
             </Routes>
           </div>
           {/* <div className="footer">

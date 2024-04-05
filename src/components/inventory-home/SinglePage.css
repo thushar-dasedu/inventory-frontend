@@ -27,8 +27,8 @@
 }
 
 .buttons button{
-    height: 70%;
-    width: 38%;
+    height: 7vh;
+    width: 20vh;
     border: none;
     text-transform: uppercase;
     font-weight: 400;
@@ -38,9 +38,19 @@
 
 .add-cart{
     background-color: orange;
+
 }
 .buy{
     background-color:rgb(241, 112, 112);
+}
+
+.add-cart:hover{
+    background-color: rgb(250, 205, 121);
+    transform: scale(1.1);
+}
+.buy:hover{
+    background-color:rgb(239, 133, 133);
+    transform: scale(1.1);
 }
 
 .brand h1{

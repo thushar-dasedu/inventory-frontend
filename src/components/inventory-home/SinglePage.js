@@ -4,6 +4,7 @@ import API from '../../axios';
 import './SinglePage.css'
 import { FaCartShopping } from "react-icons/fa6";
 import { ImPower } from "react-icons/im";
+import { Link } from 'react-router-dom';
      
 
 
@@ -42,8 +43,8 @@ useEffect(()=>{
                     <img src={`http://localhost:8080/pro-model/fileSystem/${name}`} alt={type} />
                 </div>
                 <div className="buttons">
-                <button className='add-cart'><FaCartShopping />
-        add to cart</button>
+              <Link to="/cart-page"><button className='add-cart'><FaCartShopping />
+        add to cart</button></Link>  
                 <button className='buy'><ImPower />
         buy now</button>
                 </div>
