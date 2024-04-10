@@ -5,10 +5,14 @@ import './SinglePage.css'
 import { FaCartShopping } from "react-icons/fa6";
 import { ImPower } from "react-icons/im";
 import { Link } from 'react-router-dom';
+import { useProductContext } from '../../context/ProductContext';
      
 
 
 const SinglePage = () => {
+
+  const {addToCart}=useProductContext();
+    
 const {modelId} =useParams();
 
 
@@ -43,7 +47,7 @@ useEffect(()=>{
                     <img src={`http://localhost:8080/pro-model/fileSystem/${name}`} alt={type} />
                 </div>
                 <div className="buttons">
-              <Link to={`/cart-page/${modelId}`}><button className='add-cart'><FaCartShopping />
+              <Link to={`/cart-page`}><button className='add-cart' onClick={()=>addToCart({brandName,productModelName,unitPrice,name})}><FaCartShopping />
         add to cart</button></Link>  
                 <button className='buy'><ImPower />
         buy now</button>

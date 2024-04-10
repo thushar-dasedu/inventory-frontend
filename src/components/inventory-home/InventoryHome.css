@@ -15,34 +15,43 @@
     justify-content: space-between;
     background-color: white;
      width: auto;
-    height: 17vh;
+    height: 20vh;
     margin:1%;
     gap: 1px;
 
     
 }
-span{
+p{
     font-family: 'Times New Roman', Times, serif;
-    font-weight: 600;
+    font-weight: 1em;
+    color: black;
+   
 }
 
-.image{
+.image-sec{
     display: flex;
     flex-direction: column;
     height: 75%;
+  
+  
     position: sticky;
     object-fit: contain;
     
 }
-.image a{
+.image-sec .imge{
+    height: 70%;
+    width: 100%;
+}
+.image-sec img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.image-sec a{
     color: black;
 }
-.span{
-    display: flex;
- 
-    width: 100%;
-    margin-top: 0;
-}
+
 .laptop-section{
     height: 50%;
     width: auto;

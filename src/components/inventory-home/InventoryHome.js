@@ -12,27 +12,44 @@ const InventoryHome = () => {
   return (
     <div className="inventory-main">
       <div className="category">
-        <div className="image">
+        <div className="image-sec">
+          <div className="imge">
           <img src={elec} alt="image" />
-          <div className="span"> <span>Electronics</span></div> 
+          </div>
+         
+           <p>Electronics</p>
         </div>
-        <div className="image">
+        <div className="image-sec">
+          <div className="imge">
           <img src={grocery} alt="" />
-          <div className="span"> <span>Grocery</span></div> 
+          </div>
+         
+          <p>Grocery</p>
         </div>
-        <div className="image">
-          <Link to='/product-info'> 
+        <Link to='/product-info'> 
+
+        <div className="image-sec">
+          <div className="imge">
           <img src={mobile} alt="" />
-          <div className="span">   <span>Mobile</span></div> 
-          </Link>
+          </div>
+         
+         <p>Mobile</p>
+         
         </div>
-        <div className="image">
+        </Link>
+        <div className="image-sec">
+          <div className="imge">
           <img src={appliences} alt="" />
-          <div className="span"> <span>Appliences</span></div> 
+          </div>
+         
+         <p>Appliences</p>
         </div>
-        <div className="image">
+        <div className="image-sec">
+          <div className="imge">
           <img src={fashion} alt="" />
-        <div className="span"><span>Fashion</span></div>  
+          </div>
+          
+       <p>Fashion</p>
         </div>
       </div>
       <div className="laptop-section">

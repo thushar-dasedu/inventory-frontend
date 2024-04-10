@@ -108,7 +108,7 @@ function App() {
               <Route path="/registration" element={<Registration />} />
               <Route path="/login" element={<Login />} />
               <Route path="/single-page/:modelId" element={<SinglePage/>}/>
-              <Route path="/cart-page/:modelId" element={<Cart/>}></Route>
+              <Route path="/cart-page" element={<Cart/>}></Route>
             </Routes>
           </div>
           {/* <div className="footer">
