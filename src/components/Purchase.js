@@ -27,11 +27,14 @@ const Purchase = () => {
      
     const trackSerial =  async (modelId, index) => {
         try {
-            const response = await API.get(`/product/check-serial-number/${modelId}`,{
-                headers:{
-                  'Authorization': 'basic '+ btoa('smith:smith123')
-                }
-              });
+            const response = await API.get(`/product/check-serial-number/${modelId}`
+            // ,{
+            //     headers:{
+            //       'Authorization': 'basic '+ btoa('smith:smith123')
+            //     }
+            //   }
+            );
+              console.log(response.data);
             const updatedContainSerial = [...containSerial];
             updatedContainSerial[index] = response.data;
             setContainSerial(updatedContainSerial);

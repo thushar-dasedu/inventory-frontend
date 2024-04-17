@@ -3,12 +3,11 @@ import "./Registration.css";
 import email from "../asset/email.png";
 import password from "../asset/password.png";
 import { useNavigate } from 'react-router-dom';
-import { useProductContext } from '../../context/ProductContext';
-// import API from '../../axios';
+ // import API from '../../axios';
 
 const Login = () => {
 
-  const name=useProductContext();
+ 
   const navigate=useNavigate();
   const [inputData,setInputData]=useState({
     email:"",
@@ -58,9 +57,7 @@ const Login = () => {
         <form className="heading"  >
        
        
-          <h3>
-            Login :{name}
-          </h3>
+         
           
          
             

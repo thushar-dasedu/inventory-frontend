@@ -139,3 +139,15 @@ a {
   background-color: rgb(95, 94, 92);
   border-radius: 5%;
 }
+.Home h3{
+  font-size: 1vw;
+}
+
+@media (max-width:700px){
+  h3{
+    font-size: 3vw;
+  }
+  .Home h3{
+    font-size: 2vw;
+  }
+}

@@ -11,7 +11,7 @@ const AppProvider =({ children })=>{
    
   };
 
-  return  <AppContext.Provider value={{ cart, addToCart }}>{children}</AppContext.Provider>
+  return  <AppContext.Provider value={{ cart, addToCart,setCart }}>{children}</AppContext.Provider>
 }
 
 //custom hook

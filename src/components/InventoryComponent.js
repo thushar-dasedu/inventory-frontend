@@ -11,19 +11,28 @@ const InventoryComponent = () => {
             </div>
             <div className="Home">
                 <i className="ri-home-4-fill"></i>
-                <Link to='/'>Home</Link>
+                <Link to='/'><h3>Home</h3></Link>
             </div>
 
-            <details className="customer">
+            {/* <details className="customer">
                 <summary style={{ color: 'white' }}> Customer </summary>
                 <div><Link to='/customer-info'>View Customer</Link></div>
                 <div><Link to='/customer'>New customer</Link></div>
-            </details>
+            </details> */}
+
+            <div className='supplier'>
+                <span> Customer</span>
+                <div className="dropdown-content">
+                   
+                <Link to='/customer-info'>View Customer</Link>
+                <Link to='/customer'>New customer</Link>
+                </div>
+            </div>
 
             <div className='supplier'>
                 <span>Supplier</span>
                 <div className="dropdown-content">
-                    <Link to='/'>Home</Link>
+                   
                     <Link to='/supplier-info'>List Supplier</Link>
                     <Link to='/supplier'>Add new supplier</Link>
                 </div>
@@ -39,7 +48,7 @@ const InventoryComponent = () => {
                     <Link to='/list-sale'>List Sale</Link>
                     <Link to='/add-sale'>New</Link>
                     <Link to='/update'>Update</Link>
-                    <Link to='/update'>Update</Link>
+                   
                 </div>
             </div>
         </div>
