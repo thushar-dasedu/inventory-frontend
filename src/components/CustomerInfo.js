@@ -1,4 +1,5 @@
 import API from '../axios';
+import { getCustomer } from '../axios';
 import React, { useEffect, useState } from 'react'
 import './CustomerInfo.css'
 import { Link } from 'react-router-dom';
@@ -10,11 +11,9 @@ const CustomerInfo = () => {
     const [APIdata,setAPIData]=useState([]);
 
     const getCustomerData= async()=>{
-    const Response=await  API.get('/customer/get-all-customer',{
-      headers:{
-        'Authorization': 'basic '+ btoa('smith:smith123')
-      }
-    });
+    const Response=await  getCustomer()
+   ;
+   console.log(Response.data)
     setAPIData(Response.data);    
     };
 

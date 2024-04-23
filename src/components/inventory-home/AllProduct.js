@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import API from "../../axios" 
+import { getImage } from '../../axios';
 import './AllProduct.css'
 import { FaRupeeSign } from "react-icons/fa";
 import { Link } from 'react-router-dom';
@@ -29,7 +30,7 @@ const AllProduct = () => {
                     <h4>{item.brandName}</h4>
                 </div>
                 <div className="product-image">
-                    <img src={`http://localhost:8080/pro-model/fileSystem/${item.name}`} alt="" />
+                    <img src={getImage(item.name)} alt="" />
                 </div>
                 <div className="product-model">
                     <p>{item.productModelName}</p>
