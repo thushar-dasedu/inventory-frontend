@@ -47,7 +47,7 @@ const InventoryComponent = () => {
                 <div className="dropdown-content">
                     <Link to='/list-sale'>List Sale</Link>
                     <Link to='/add-sale'>New</Link>
-                    <Link to='/update'>Update</Link>
+                    <Link to='/sale-report'>sales report</Link>
                    
                 </div>
             </div>

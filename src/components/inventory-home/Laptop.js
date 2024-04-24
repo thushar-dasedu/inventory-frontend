@@ -1,47 +1,40 @@
-import React from 'react'
-import asus15 from '../asset/tuf.png'
-import asusvivo from '../asset/asusvivo.webp'
-import dellimpre from '../asset/delli-removebg-preview.png'
-import acr1 from '../asset/acr1.jpg'
-import acr2 from '../asset/acr2.webp'
-import hp from '../asset/hp1.jpg'
-import './Laptop.css'
-
+import './Laptop.css';
+import eadv from '../asset/la1.webp';
+import ecom2 from '../asset/onli1.jpg';
+import ecom3 from '../asset/images.jpg';
+import Carousel from 'react-bootstrap/Carousel';
 
 const Laptop = () => {
   return (
     <div className='laptop-main'>
-       
-       <h4>Best Deals on Laptops</h4> 
-       <div className="laptop-body"> 
-       <div className="laptops">
-              <img src={asus15} alt="" />
-              <div className="brand">Asus</div>
-       </div>
-       <div className="laptops">        
-              <img src={asusvivo} alt="" />
-              <div className="brand">Asus</div>
-       </div>
-       <div className="laptops">
-              <img src={dellimpre} alt="" />
-              <div className="brand">Dell</div>
-       </div>
-       <div className="laptops">
-              <img src={acr1} alt="" />
-              <div className="brand">Acer</div>
-       </div>
-       <div className="laptops">
-              <img src={acr2} alt="" />
-              <div className="brand">Acer</div>
-       </div>
-       <div className="laptops">
-              <img src={hp} alt="" />
-              <div className="brand">Hp</div>
-       </div>
-
-       </div>
+      <Carousel data-bs-theme="dark">
+        <Carousel.Item>
+          <img
+          style={{height:'25vh'}}
+            className="d-block w-100 "
+            src={eadv}
+            alt="First slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+           style={{height:'25vh'}}
+            className="d-block w-100 "
+            src={ecom2}
+            alt="Second slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+           style={{height:'25vh'}}
+            className="d-block w-100 "
+            src={ecom3}
+            alt="Third slide"
+          />
+        </Carousel.Item>
+      </Carousel>
     </div>
-  )
-}
+  );
+};
 
-export default Laptop
+export default Laptop;

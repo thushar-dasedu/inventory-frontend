@@ -23,12 +23,13 @@ const SupplierInsertion = (props) => {
             setErrorMessage("Please fill in all fields.");
             return;
           }
+          if (inputData.mobileNumber.toString().length !== 10) {
+            alert("Mobile number should contain exactly 10 digits");
+            return;
+          }
           try{
-            const response=await API.post(`/supplier/add-supplier`,inputData,{
-              headers:{
-                'Authorization': 'basic '+ btoa('smith:smith123')
-              }
-            });
+            const response=await API.post(`/supplier/add-supplier`,inputData
+           );
             console.log(response.data);
             navigate('/supplier-info');
           }
@@ -88,7 +89,7 @@ const SupplierInsertion = (props) => {
               Mobile Number
             </label>
             <input
-              type="tel"
+              type="numbern "
               id="mobile_number"
               className="form-control"
               name='mobileNumber'

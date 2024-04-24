@@ -14,9 +14,13 @@ API.interceptors.request.use(
       return Promise.reject(error);
     }
   );
-  export const getImage = (name) => {
-    return API.get(`/pro-model/fileSystem/${name}`);
-  };
+  // export const getImage = (name) => {
+  //   return API.get(`/pro-model/fileSystem/${name}`);
+  // };
+
+  export const saleReport=()=>{
+    return API.get("/sale-detail/get/sale/report");
+  }
 
   export const getCustomer=()=>{
     return API.get('/customer/find/all');

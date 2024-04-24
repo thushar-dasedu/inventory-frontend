@@ -35,11 +35,26 @@ import { useNavigate } from "react-router-dom";
      }  
     const signUp=(e)=>{
       e.preventDefault();
+ // Check if any field is empty
+ if (
+  !inputData.customerName ||
+  !inputData.customerAddress ||
+  !inputData.mobileNumber ||
+  !inputData.email ||
+  !inputData.password
+) {
+  alert("Please fill all the fields");
+  return;
+}
 
-      if(inputData.customerName===""&&inputData.email===""&&inputData.password===""){
-       alert("Please fill all the fields")
-       }
-       addUser();
+// Check if mobile number contains exactly 10 digits
+if (inputData.mobileNumber.toString().length !== 10) {
+  alert("Mobile number should contain exactly 10 digits");
+  return;
+}
+
+// If all validations pass, proceed with sign up
+addUser();
     }
     const signIn=(e)=>{
       e.preventDefault()

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Cart.css';
 import { useProductContext } from '../../context/ProductContext';
 import { FaTrash } from "react-icons/fa"; 
-import { getImage } from '../../axios';
+// import { getImage } from '../../axios';
 
 const Cart = () => {
   const { cart, setCart } = useProductContext(); // Assuming there's a setter function for cart
@@ -48,7 +48,7 @@ const Cart = () => {
           <div key={item.productId} className="cart-container">
             <div className="product-listo">
               <div className="cart-img">
-                <img src={getImage(item.name)} alt="" />
+                <img src={`http://localhost:8080/pro-model/fileSystem/${item.name}`} alt="" />
               </div>
               <div className="cart-detail">
                 <span>Brand Name: {item.brandName}</span>

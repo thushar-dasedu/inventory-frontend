@@ -1,48 +1,14 @@
 .laptop-main{
   height: 100%;
   width: 100%; 
+  
     
     
 }
-.laptop-main h4{
-    margin-left: 1%;
-}
-.laptop-body{
-    display: flex;
-
-    
-    height: 80%;
-    width: 100%;
-    background-color: white;
-}
-.laptops{
-    height: 100%;
-    width: 15%;
-    border: 1px black solid;
-    border-radius: 5px;
-    margin-left: 1%;
-    /* background-color: blue; */
-    
-}
-.laptops>img{
-    height: 80%;
-    width: 100%;
-    object-fit: contain;
+custom-hieght{
+    height:5vh;
 }
 
-.laptops .brand{
-    position: relative;
-    margin-left: 40%;
-}
- @media (max-width:700px){
-    .laptop-body{
-        display: flex;
-        flex-wrap: wrap;
-        height: 20vh;
-    }
-   .laptops .brand{
-    position: relative;
-    margin-left: 4vw;
-   }
+  
 
-  }
+  

@@ -25,6 +25,7 @@ import Sale from "./components/Sale";
 import ProductInfo from "./components/inventory-home/ProductInfo";
 import SinglePage from "./components/inventory-home/SinglePage";
 import Cart from "./components/inventory-home/Cart";
+import SalesReportGraph from "./components/inventory-home/SalesReportGraph";
 // import Footer from './Footer';
 
 function App() {
@@ -109,6 +110,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/single-page/:modelId" element={<SinglePage/>}/>
               <Route path="/cart-page" element={<Cart/>}></Route>
+              <Route path="/sale-report" element={<SalesReportGraph/>}/>
             </Routes>
           </div>
           {/* <div className="footer">
