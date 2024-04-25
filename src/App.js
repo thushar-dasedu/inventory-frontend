@@ -38,6 +38,7 @@ function App() {
         </div> 
         <div className="rightDiv">
           <Navbar title="TDBrands" />
+          
           <div className="content">
             <Routes>
               <Route exact path="/customer-info" element={<CustomerInfo />} />
@@ -113,25 +114,12 @@ function App() {
               <Route path="/sale-report" element={<SalesReportGraph/>}/>
             </Routes>
           </div>
-          {/* <div className="footer">
-            <Footer/>
-          </div>    */}
+        
         </div>
       </div>
     </Router>
 
-    //     <Router>
-    //       <div className="rightDiv">
-    //     <Navbar title="TDBrands" /></div>
-    // <div className="content">
-
-    //  <Routes>
-    //   <Route path='/' element={<InventoryHome/>}/>
-    //   <Route path='/registration' element={<Registration/>}/>
-    //   <Route path='/login' element={<Login/>}/>
-    //  </Routes>
-    //  </div>
-    // </Router>
+  
   );
 }
 

@@ -23,7 +23,14 @@ const Navbar = (props) => {
  
                     </form> */}
                      {/* <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" /> */}
-                     <Button  ><Link to='/login'><i class="ri-user-2-fill"></i>Login</Link></Button> 
+                     <Button  ><i class="ri-user-2-fill"></i></Button> 
+                     <div className="dropdown-content">
+                    <Link to='/list-sale'>List Sale</Link>
+                    <Link to='/add-sale'>New</Link>
+                    <Link to='/sale-report'>sales report</Link>
+                   
+                </div>
+               
                     <Link to="/cart-page"><div className="cart">
                      <i class="ri-shopping-cart-2-line"></i></div></Link> 
                 </div>

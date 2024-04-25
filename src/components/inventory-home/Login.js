@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import API from '../../axios';
 
 const Login = () => {
@@ -26,6 +26,7 @@ const Login = () => {
   
       // Store the token in local storage or session storage
       localStorage.setItem('token', token);
+      localStorage.setItem('inputData', JSON.stringify(inputData));
       // Redirect or navigate to another page upon successful login
       navigate('/'); // Replace '/dashboard' with your desired route
     } catch (error) {

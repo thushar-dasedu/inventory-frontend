@@ -16,3 +16,35 @@ a{
     color: white;
     text-decoration: none;
 }
+/* Dropdown container */
+.dropdown-menu {
+    position: absolute; /* Position the dropdown relative to its container */
+    top: 100%; /* Position the dropdown below the container */
+    left: 0; /* Align the dropdown with the left edge of the container */
+    z-index: 1000; /* Ensure dropdown appears above other elements */
+    /* Initially hide the dropdown */
+    min-width: 160px; /* Set minimum width for the dropdown */
+    padding: 8px 0; /* Add padding to the dropdown */
+    margin: 2px 0 0; /* Add margin to separate the dropdown from the container */
+    list-style: none; /* Remove default list styles */
+    background-color: #fff; /* Set background color */
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 4px; /* Add border radius */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Add box shadow */
+  }
+  
+  /* Dropdown items */
+  .dropdown-menu ul {
+    padding: 0; /* Reset padding for the unordered list */
+    margin: 0; /* Reset margin for the unordered list */
+  }
+  
+  .dropdown-menu li {
+    padding: 8px 16px; /* Add padding to each dropdown item */
+  }
+  
+  .dropdown-menu li:hover {
+    background-color: #f5f5f5; /* Change background color on hover */
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+  
